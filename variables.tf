@@ -2,15 +2,15 @@
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 variable "tenancy_ocid" {}
-variable "user_ocid" {}
-variable "fingerprint" {}
-variable "private_key_path" {}
+# variable "user_ocid" {}
+# variable "fingerprint" {}
+# variable "private_key_path" {}
 variable "region" {}
 variable "compartment_ocid" {}
 variable "availablity_domain_name" {}
 
 variable "use_existing_vcn" {
-  default = false
+  default = true
 }
 
 variable "postgresql_vcn" {
