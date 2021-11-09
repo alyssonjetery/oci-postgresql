@@ -125,7 +125,7 @@ resource "oci_core_instance" "postgresql_hotstandby1" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.InstanceImageOCID_postgresql_hotstandby1_shape.images[0].id
+    source_id   = "ocid1.image.oc1.ap-melbourne-1.aaaaaaaaz5bdk2vrwlghroyfmsw22nqso52dsijzfvwyj2jthvekksbtmyra"
   }
 
   metadata = {
