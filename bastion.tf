@@ -2,7 +2,7 @@
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 resource "oci_bastion_bastion" "bastion-service" {
-  count                        = var.create_in_private_subnet ? 1 : 0
+  count                        = var.create_bastion ? 1 : 0
   bastion_type                 = "STANDARD"
   compartment_id               = var.compartment_ocid
   target_subnet_id             = !var.use_existing_vcn ? oci_core_subnet.postgresql_subnet[0].id : var.postgresql_subnet

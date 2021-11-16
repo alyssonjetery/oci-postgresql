@@ -13,6 +13,10 @@ variable "use_existing_vcn" {
   default = true
 }
 
+variable "create_bastion" {
+  default = true
+}
+
 variable "postgresql_vcn" {
   default = ""
 }
