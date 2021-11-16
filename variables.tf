@@ -34,7 +34,6 @@ variable "create_drg_for_private_subnet" {
 }
 
 variable "image_ocid" {
-  default = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id 
 }
 
 variable "release" {
