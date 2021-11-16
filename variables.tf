@@ -21,6 +21,10 @@ variable "postgresql_subnet" {
   default = ""
 }
 
+variable "postgresql_display_name" {
+  default = "PostgreSQL"
+}
+
 variable "show_advanced" {
   default = false
 }
@@ -34,6 +38,7 @@ variable "create_drg_for_private_subnet" {
 }
 
 variable "image_ocid" {
+  default = ""
 }
 
 variable "release" {

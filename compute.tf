@@ -22,7 +22,8 @@ data "template_cloudinit_config" "cloud_init" {
 resource "oci_core_instance" "postgresql_master" {
   availability_domain = var.availablity_domain_name
   compartment_id      = var.compartment_ocid
-  display_name        = "PostgreSQL_Master"
+  display_name        = "${postgresql_display_name}_Master"
+  #display_name        = "PostgreSQL_Master"
   shape               = var.postgresql_instance_shape
 
   dynamic "shape_config" {
@@ -76,7 +77,8 @@ resource "oci_core_instance" "postgresql_master" {
 resource "oci_core_boot_volume_backup" "postgresql_master_boot_volume_backup" {
   count          = var.boot_volume_initial_backup ? 1 : 0
   boot_volume_id = oci_core_instance.postgresql_master.boot_volume_id
-  display_name   = "PostgreSQL_Master_Boot_Volume_Backup_FULL"
+  display_name        = "${postgresql_display_name}_Master_Boot_Volume_Backup_FULL"
+  #display_name   = "PostgreSQL_Master_Boot_Volume_Backup_FULL"
   type           = "FULL"
 }
 
@@ -90,7 +92,8 @@ resource "oci_core_instance" "postgresql_hotstandby1" {
   count               = var.postgresql_deploy_hotstandby1 ? 1 : 0
   availability_domain = var.postgresql_hotstandby1_ad == "" ? var.availablity_domain_name : var.postgresql_hotstandby1_ad
   compartment_id      = var.compartment_ocid
-  display_name        = "PostgreSQL_HotStandby1"
+  display_name        = "${postgresql_display_name}_HotStandby1"
+  #display_name        = "PostgreSQL_HotStandby1"
   shape               = var.postgresql_hotstandby1_shape
 
   dynamic "shape_config" {
@@ -145,7 +148,8 @@ resource "oci_core_instance" "postgresql_hotstandby1" {
 resource "oci_core_boot_volume_backup" "postgresql_hotstandby1_boot_volume_backup" {
   count          = (var.postgresql_deploy_hotstandby1 && var.boot_volume_initial_backup) ? 1 : 0
   boot_volume_id = oci_core_instance.postgresql_hotstandby1[0].boot_volume_id
-  display_name   = "PostgreSQL_Hotstandby1_Boot_Volume_Backup_FULL"
+  display_name        = "${postgresql_display_name}_Hotstandby1_Boot_Volume_Backup_FULL"
+  #display_name   = "PostgreSQL_Hotstandby1_Boot_Volume_Backup_FULL"
   type           = "FULL"
 }
 
@@ -159,7 +163,8 @@ resource "oci_core_instance" "postgresql_hotstandby2" {
   count               = var.postgresql_deploy_hotstandby2 ? 1 : 0
   availability_domain = var.postgresql_hotstandby2_ad == "" ? var.availablity_domain_name : var.postgresql_hotstandby2_ad
   compartment_id      = var.compartment_ocid
-  display_name        = "PostgreSQL_HotStandby2"
+  display_name        = "${postgresql_display_name}_HotStandby2"
+  #display_name        = "PostgreSQL_HotStandby2"
   shape               = var.postgresql_hotstandby2_shape
 
   dynamic "shape_config" {
@@ -214,7 +219,8 @@ resource "oci_core_instance" "postgresql_hotstandby2" {
 resource "oci_core_boot_volume_backup" "postgresql_hotstandby2_boot_volume_backup" {
   count          = (var.postgresql_deploy_hotstandby2 && var.boot_volume_initial_backup) ? 1 : 0
   boot_volume_id = oci_core_instance.postgresql_hotstandby2[0].boot_volume_id
-  display_name   = "PostgreSQL_Hotstandby2_Boot_Volume_Backup_FULL"
+  display_name        = "${postgresql_display_name}_Hotstandby2_Boot_Volume_Backup_FULL"
+  #display_name   = "PostgreSQL_Hotstandby2_Boot_Volume_Backup_FULL"
   type           = "FULL"
 }
 
