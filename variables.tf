@@ -17,6 +17,10 @@ variable "create_bastion" {
   default = true
 }
 
+variable "bastion_ocid" {
+  default = ""
+}
+
 variable "postgresql_vcn" {
   default = ""
 }
