@@ -57,7 +57,8 @@ resource "oci_core_instance" "postgresql_master" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id
+    source_id   = var.image_ocid
+    #source_id   = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id
   }
 
   metadata = {
@@ -125,7 +126,8 @@ resource "oci_core_instance" "postgresql_hotstandby1" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id
+    source_id   = var.image_ocid
+    #source_id   = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id
   }
 
   metadata = {
@@ -193,7 +195,8 @@ resource "oci_core_instance" "postgresql_hotstandby2" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id
+    source_id   = var.image_ocid
+    #source_id   = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id
   }
 
   metadata = {
