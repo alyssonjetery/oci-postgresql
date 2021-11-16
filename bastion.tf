@@ -20,7 +20,7 @@ resource "oci_bastion_session" "ssh_postgresql_master_session" {
   ]
 
   count      = var.create_in_private_subnet ? 1 : 0
-  bastion_id = coalesce(var.bastion_ocid, oci_bastion_bastion.bastion-service[0].id)
+  bastion_id = coalesce(oci_bastion_bastion.bastion-service[0].id, var.bastion_ocid)
 
   key_details {
     public_key_content = tls_private_key.public_private_key_pair.public_key_openssh
