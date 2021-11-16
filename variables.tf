@@ -33,6 +33,10 @@ variable "create_drg_for_private_subnet" {
   default = true
 }
 
+variable "image_ocid" {
+  default = data.oci_core_images.InstanceImageOCID_postgresql_instance_shape.images[0].id 
+}
+
 variable "release" {
   description = "Reference Architecture Release (OCI Architecture Center)"
   default     = "1.4"
