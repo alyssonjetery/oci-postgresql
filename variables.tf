@@ -21,6 +21,10 @@ variable "bastion_ocid" {
   default = ""
 }
 
+variable "vnic_hostname" {
+  default = "pg"
+}
+
 variable "postgresql_vcn" {
   default = ""
 }
