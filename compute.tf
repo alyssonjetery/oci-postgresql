@@ -53,7 +53,7 @@ resource "oci_core_instance" "postgresql_master" {
     subnet_id        = !var.use_existing_vcn ? oci_core_subnet.postgresql_subnet[0].id : var.postgresql_subnet
     display_name     = "primaryvnic"
     assign_public_ip = var.create_in_private_subnet ? false : true
-    hostname_label   = "pgmaster"
+    hostname_label   = "${var.vnic_hostname}master"
   }
 
   source_details {
@@ -124,7 +124,8 @@ resource "oci_core_instance" "postgresql_hotstandby1" {
     subnet_id        = !var.use_existing_vcn ? oci_core_subnet.postgresql_subnet[0].id : var.postgresql_subnet
     display_name     = "primaryvnic"
     assign_public_ip = var.create_in_private_subnet ? false : true
-    hostname_label   = "pgstandby1"
+    hostname_label   = "${var.vnic_hostname}standby1"
+    #hostname_label   = "pgstandby1"
   }
 
   source_details {
@@ -195,7 +196,8 @@ resource "oci_core_instance" "postgresql_hotstandby2" {
     subnet_id        = !var.use_existing_vcn ? oci_core_subnet.postgresql_subnet[0].id : var.postgresql_subnet
     display_name     = "primaryvnic"
     assign_public_ip = var.create_in_private_subnet ? false : true
-    hostname_label   = "pgstandby2"
+    hostname_label   = "${var.vnic_hostname}standby2"
+    #hostname_label   = "pgstandby2"
   }
 
   source_details {
